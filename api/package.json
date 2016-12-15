@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/astrobass/node-microservice/issues"
   },
-  "homepage": "https://github.com/astrobass/node-microservice#readme"
+  "homepage": "https://github.com/astrobass/node-microservice#readme",
+  "dependencies": {
+    "mongodb": "^2.2.16"
+  }
 }
