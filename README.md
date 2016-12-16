@@ -9,4 +9,4 @@ Start api container
 ---
 docker build -t api .
 
-docker run api
+docker run --name api --link mongo:mongo -d api
