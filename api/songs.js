@@ -20,41 +20,41 @@ router.get('/', function(req, res) {
 
 // Create
 router.post('/', function(req, res) {
-  req.db.collection(tableName).find().toArray(function(err, results) {
+  Songs.save(req.body, function(err, results) {
     if(err) {
       console.log('Error');
     }
-    res.send('CREATE');
+    res.send('CREATE: ' + req.body);
   });
 });
 
 // Read
 router.get('/:id', function(req, res) {
-  req.db.collection(tableName).find().toArray(function(err, results) { 
+  Songs.find(req.params.id, function(err, results) { 
     if(err) {
       console.log('Error');
     }
-    res.send('READ');
+    res.send('READ: ' + req.params.id);
   });
 });
 
 // Update
 router.put('/:id', function(req, res) {
-  req.db.collection(tableName).save(req.body, function(req, res) {
+  Songs.save(req.body, function(err, results) {
     if(err) {
       console.log('Error');
     }
-    res.send('UPDATE');
+    res.send('UPDATE: ' + req.params.id);
   });
 });
 
 // DELETE
 router.delete('/:id', function(req, res) {
-  req.db.collection(tableName).delete(req.body, function(req, res) {
+  Songs.delete(req.params.id, function(req, res) {
     if(err) {
       console.log('Error');
     }
-    res.send('DELETE');
+    res.send('DELETE: ' + req.params.id);
   });
 });
 
