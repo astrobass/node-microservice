@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var router = express.Router();
 
+// Song database schema and model
 var Song = new Schema({
   name: String
 });
