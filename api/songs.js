@@ -20,8 +20,7 @@ router.get('/', function(req, res) {
 
 // Create
 router.post('/', function(req, res) {
-  var song = new Songs(req.body);
-  song.create(song, function(err, song) {
+  Songs.create(song, function(err, song) {
     if(err) {
       console.log('Error: ' + err);
     }
