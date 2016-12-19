@@ -4,13 +4,18 @@ var mongoose = require('mongoose');
 var config = require('./config');
 var songs = require('./songs');
 
-var db;
+console.log('Database: ' + config.db[app.settings.env]);
 
-mongoose.connect(config.db[app.settings.env], function(err, database) {
+mongoose.connect(config.db[app.settings.env], function(err) {
   if(err) {
     return console.log('Mongo connect error... ' + err);
   }
-  db = database;
+  var db = mongoose.connection;
+
+  app.use(function(req, res, next){
+    req.db = db;
+    next();
+  });
 
   app.use('/songs', songs);
 
