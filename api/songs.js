@@ -20,7 +20,7 @@ router.get('/', function(req, res) {
 
 // Create
 router.post('/', function(req, res) {
-  var song = new Song(req.body);
+  var song = new Songs(req.body);
   song.create(song, function(err, song) {
     if(err) {
       console.log('Error: ' + err);
@@ -41,7 +41,7 @@ router.get('/:id', function(req, res) {
 
 // Update
 router.put('/:id', function(req, res) {
-  var song = new Song(req.body);
+  var song = new Songs(req.body);
   song.save(function(err) {
     if(err) {
       console.log('Error: '+ err);
