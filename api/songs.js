@@ -34,7 +34,7 @@ router.get('/:id', function(req, res) {
 });
 
 // Update
-router.post('/:id', function(req, res) {
+router.put('/:id', function(req, res) {
   req.db.collection(tableName).save(req.body, function(req, res) {
     if(err) {
       console.log('Error');
