@@ -1,11 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-var tableName = 'songs';
+var Song = new Schema({
+  name: String
+});
+var Songs = mongoose.model('Song', Song);
 
 // List
 router.get('/', function(req, res) {
-  req.db.collection(tableName).find().toArray(function(err, results) {
+  Songs.find({}, function(err, song) {
     if(err) {
       console.log('Error');
     }
