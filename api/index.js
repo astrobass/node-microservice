@@ -6,6 +6,7 @@ var songs = require('./songs');
 
 console.log('Database: ' + config.db[app.settings.env]);
 
+mongoose.Promise = global.Promise;
 mongoose.connect(config.db[app.settings.env], function(err) {
   if(err) {
     return console.log('Mongo connect error... ' + err);
