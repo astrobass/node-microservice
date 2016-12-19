@@ -1,13 +1,13 @@
 var express =  require('express');
 var app = express();
-var MongoClient = require('mongodb').MongoClient;
+var mongoose - require('mongoose');
 
 var dbName = 'mongo';
 var tableName = 'test';
 
 var db;
 
-MongoClient.connect('mongodb://mongo:27017', function(err, database) {
+mongoose.connect(config.db[app.settings.env], function(err, database) {
   if(err) {
     return console.log('Mongo connect error... ' + err);
   }
