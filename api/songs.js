@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
+var tableName = 'songs';
+
 // List
 router.get('/', function(req, res) {
-  db.collection(tableName).find().toArray(function(err, results) {
+  req.db.collection(tableName).find().toArray(function(err, results) {
     if(err) {
       console.log('Error');
     }
@@ -13,7 +15,7 @@ router.get('/', function(req, res) {
 
 // Create
 router.post('/', function(req, res) {
-  db.collection(tableName).find().toArray(function(err, results) {
+  req.db.collection(tableName).find().toArray(function(err, results) {
     if(err) {
       console.log('Error');
     }
@@ -23,7 +25,7 @@ router.post('/', function(req, res) {
 
 // Read
 router.get('/:id', function(req, res) {
-  db.collection(tableName).find().toArray(function(err, results) { 
+  req.db.collection(tableName).find().toArray(function(err, results) { 
     if(err) {
       console.log('Error');
     }
@@ -33,7 +35,7 @@ router.get('/:id', function(req, res) {
 
 // Update
 router.post('/:id', function(req, res) {
-  db.collection(tableName).save(req.body, function(req, res) {
+  req.db.collection(tableName).save(req.body, function(req, res) {
     if(err) {
       console.log('Error');
     }
@@ -43,6 +45,7 @@ router.post('/:id', function(req, res) {
 
 // DELETE
 router.delete('/:id', function(req, res) {
+  req.db.collection(tableName).delete(req.body, function(req, res) {
     if(err) {
       console.log('Error');
     }
