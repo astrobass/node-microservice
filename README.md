@@ -24,8 +24,5 @@ Run Watchtower to automatically pull new Docker image from Dockerhub
 ```
 docker pull centurylink/watchtower
 
-docker run -d \
-  --name watchtower \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  centurylink/watchtower
+docker run -d --name watchtower -v /var/run/docker.sock:/var/run/docker.sock centurylink/watchtower --cleanup
 ```
