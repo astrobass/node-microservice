@@ -1,29 +1,24 @@
-var express =  require('express');
-var mongoose = require('mongoose');
-var config = require('./config');
-var songs = require('./songs');
-
-var app = express();
-
-// Connect to Mongo database
-mongoose.Promise = global.Promise;
-mongoose.connect(config.db[app.settings.env], function(err) {
-  if(err) {
-    return console.log('Mongo connect error... ' + err);
+{
+  "name": "node-microservice",
+  "version": "1.0.0",
+  "description": "Starting a node-based microservice ===",
+  "main": "config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/astrobass/node-microservice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/astrobass/node-microservice/issues"
+  },
+  "homepage": "https://github.com/astrobass/node-microservice#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "mongoose": "^4.7.4"
   }
-  
-  // Make database accessable to API resources
-  var db = mongoose.connection;
-  app.use(function(req, res, next){
-    req.db = db;
-    next();
-  });
-
-  // List of resources
-  app.use('/songs', songs);
-
-  // Start API server
-  app.listen(8888, function() {
-    console.log('Listening on port 8888');
-  });
-});
+}
