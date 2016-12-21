@@ -4,4 +4,3 @@ module.exports = {
       development: "mongodb://mongo:27017",
   }
 };
-Contact GitHub API Training Shop Blog About
