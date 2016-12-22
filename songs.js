@@ -11,11 +11,11 @@ var Songs = mongoose.model('Song', Song);
 
 // List
 router.get('/', function(req, res) {
-  Songs.find({}, function(err, song) {
+  Songs.find({}, function(err, songs) {
     if(err) {
-      console.log('Error');
+      res.send('Error');
     }
-    res.send('LIST');
+    res.json(songs);
   });
 });
 
@@ -24,40 +24,42 @@ router.post('/', function(req, res) {
   var song = new Songs(req.body);
   Songs.create(song, function(err, song) {
     if(err) {
-      console.log('Error: ' + err);
+      res.send('Error: ' + err);
     }
-    res.send('CREATE: ' + req.body);
+    res.send('OK');
   });
 });
 
 // Read
 router.get('/:id', function(req, res) {
-  Songs.find(req.params.id, function(err, results) { 
+  Songs.findById(req.params.id, function(err, song) {
     if(err) {
       console.log('Error: ' + err);
     }
-    res.send('READ: ' + req.params.id);
+    res.json(song);
   });
 });
 
 // Update
 router.put('/:id', function(req, res) {
-  var song = new Songs(req.body);
-  song.save(function(err) {
-    if(err) {
-      console.log('Error: '+ err);
-    }
-    res.send('UPDATE: ' + req.params.id);
+  Songs.findById(req.params.id, function(err, song) {
+    var song = new Songs(req.body);
+    song.save(function(err) {
+      if(err) {
+        console.log('Error: '+ err);
+      }
+      res.send('OK');
+    });
   });
 });
 
 // DELETE
 router.delete('/:id', function(req, res) {
-  Songs.delete(req.params.id, function(req, res) {
+  Songs.remove({id: req.params.id}, function(req, res) {
     if(err) {
       console.log('Error: ' + err);
     }
-    res.send('DELETE: ' + req.params.id);
+    res.send('OK');
   });
 });
 
