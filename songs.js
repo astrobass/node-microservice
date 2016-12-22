@@ -43,7 +43,6 @@ router.get('/:id', function(req, res) {
 // Update
 router.put('/:id', function(req, res) {
   Songs.findById(req.params.id, function(err, song) {
-    var song = new Songs(req.body);
     song.save(function(err) {
       if(err) {
         res.send('Error');
