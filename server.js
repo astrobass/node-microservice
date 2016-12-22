@@ -1,5 +1,6 @@
 var express =  require('express');
 var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
 var config = require('./config');
 var songs = require('./songs');
 
@@ -11,6 +12,9 @@ mongoose.connect(config.db[app.settings.env], function(err) {
   if(err) {
     return console.log('Mongo connect error... ' + err);
   }
+  
+  app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(bodyParser.json());
   
   // Make database accessable to API resources
   var db = mongoose.connection;
