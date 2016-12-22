@@ -22,9 +22,9 @@ router.get('/', function(req, res) {
 // Create
 router.post('/', function(req, res) {
   var song = new Songs(req.body);
-  Songs.create(song, function(err, song) {
+  song.save(function(err) {
     if(err) {
-      res.send('Error: ' + err);
+      res.send('Error');
     }
     res.send('OK');
   });
@@ -34,7 +34,7 @@ router.post('/', function(req, res) {
 router.get('/:id', function(req, res) {
   Songs.findById(req.params.id, function(err, song) {
     if(err) {
-      console.log('Error: ' + err);
+      res.send('Error');
     }
     res.json(song);
   });
@@ -46,7 +46,7 @@ router.put('/:id', function(req, res) {
     var song = new Songs(req.body);
     song.save(function(err) {
       if(err) {
-        console.log('Error: '+ err);
+        res.send('Error');
       }
       res.send('OK');
     });
@@ -57,7 +57,7 @@ router.put('/:id', function(req, res) {
 router.delete('/:id', function(req, res) {
   Songs.remove({id: req.params.id}, function(req, res) {
     if(err) {
-      console.log('Error: ' + err);
+      res.send('Error');
     }
     res.send('OK');
   });
