@@ -13,11 +13,18 @@ docker build -t api .
 docker run --name api --link mongo:mongo -p 8888:8888 -d api
 ```
 
-Run from Dockerhub (assumes Mongo container is already running)
+Run from Dockerhub (assumes Mongo container is already running and linking via Docker container bridge)
 ```
 docker pull astrobass/node-microservice
 
 docker run --name api --link mongo:mongo -p 8888:8888 -d astrobass/node-microservice
+```
+
+Run from Dockerhub (assumes Mongo container is running and container is on local network)
+```
+docker pull astrobass/node-microservice
+
+docker run --name api --net="host" -p 8888:8888 -d astrobass/node-microservice
 ```
 
 Run Watchtower to automatically pull new Docker image from Dockerhub
