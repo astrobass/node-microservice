@@ -10,7 +10,8 @@ var app = express();
 mongoose.Promise = global.Promise;
 mongoose.connect(config.db[app.settings.env], function(err) {
   if(err) {
-    console.log('Mongo connect error... ' + err);
+    console.log(err);
+    return;
   }
   
   app.use(bodyParser.urlencoded({ extended: true }));
