@@ -1,0 +1,84 @@
+{
+	"variables": [],
+	"info": {
+		"name": "node-microservice",
+		"_postman_id": "c9aaadae-4e44-ddb4-13d5-ce1bf4accb97",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Songs LIST",
+			"request": {
+				"url": "localhost:8888/songs",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Songs CREATE",
+			"request": {
+				"url": "localhost:8888/songs",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Create song name\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Songs READ",
+			"request": {
+				"url": "localhost:8888/songs/586fab407eca8b000152f9ef",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Songs UPDATE",
+			"request": {
+				"url": "localhost:8888/songs/586fab407eca8b000152f9ef",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Update song title\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Songs DELETE",
+			"request": {
+				"url": "localhost:8888/songs/12",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
