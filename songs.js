@@ -14,6 +14,7 @@ router.get('/', function(req, res) {
   Songs.find({}, function(err, songs) {
     if(err) {
       res.send('Error');
+      return;
     }
     res.json(songs);
   });
@@ -25,6 +26,7 @@ router.post('/', function(req, res) {
   song.save(function(err) {
     if(err) {
       res.send('Error');
+      return;
     }
     res.send('OK');
   });
@@ -35,6 +37,7 @@ router.get('/:id', function(req, res) {
   Songs.findById(req.params.id, function(err, song) {
     if(err) {
       res.send('Error');
+      return;
     }
     res.json(song);
   });
@@ -43,6 +46,10 @@ router.get('/:id', function(req, res) {
 // Update
 router.put('/:id', function(req, res) {
   Songs.findById(req.params.id, function(err, song) {
+    if(!song) {
+      res.send('No song match');
+      return;
+    }
     song.save(function(err) {
       if(err) {
         res.send('Error');
@@ -57,6 +64,7 @@ router.delete('/:id', function(req, res) {
   Songs.remove({id: req.params.id}, function(req, res) {
     if(err) {
       res.send('Error');
+      return;
     }
     res.send('OK');
   });
