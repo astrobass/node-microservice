@@ -10,7 +10,7 @@ Run from Dockerhub (assumes Mongo container is running and container is on local
 ```
 docker pull astrobass/node-microservice
 
-docker run --name api --net="host" -p 8888:8888 -d astrobass/node-microservice
+docker run --name api --link mongo:mongo -p 8888:8888 -d astrobass/node-microservice
 ```
 
 Run Watchtower to automatically pull latest Docker image from Dockerhub when it changes
